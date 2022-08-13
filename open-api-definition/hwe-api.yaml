@@ -1,0 +1,296 @@
+openapi: 3.0.1
+info:
+  title: HomeWizard Energy API
+  description: With the HomeWizard Energy platform, you can get insights in your energy usage. Use the HomeWizard Wi-Fi P1 meter to access real-time data directly from your smart meter, the HomeWizard Wi-Fi Energy Socket to get energy insights from all your devices, the HomeWizard Wi-Fi kWh meter to measure devices such as solar panels and the HomeWizard Wi-Fi Watermeter to get insight in your water usage. With the open API you can integrate the data directly into your system of choice.
+  license:
+    name: The HomeWizard Energy API license
+    url: https://homewizard-energy-api.readthedocs.io/index.html#terms-and-conditions
+  version: v1
+externalDocs:
+  description: Find out more about the HomeWizard API
+  url: https://homewizard-energy-api.readthedocs.io/
+servers:
+  - url: http://192.168.44.75
+tags:
+  - name: homewizard
+    description: HomeWizard API
+    externalDocs:
+      description: Find out more
+      url: https://homewizard-energy-api.readthedocs.io/
+paths:
+  /api:
+    get:
+      tags:
+        - homewizard
+      summary: Basic information
+      description: This endpoint allows you to get basic information from the device.
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basic'
+        400:
+          $ref: '#/components/responses/400'
+  /api/v1/data:
+    get:
+      tags:
+        - homewizard
+      summary: Recent measurement
+      description: This endpoint allows you to get the most recent measurement from the device.
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/DataHweP1'
+                  - $ref: '#/components/schemas/DataHweSkt'
+                  - $ref: '#/components/schemas/DataHweWtr'
+                  - $ref: '#/components/schemas/DataSDM230Wifi'
+                  - $ref: '#/components/schemas/DataSDM630Wifi'
+        400:
+          $ref: '#/components/responses/400'
+  /api/v1/telegram:
+    get:
+      tags:
+        - homewizard
+      summary: Recent telegram
+      description: This endpoint returns the most recent, valid telegram that was given by the P1 meter, therefore this endpoint is only available for the HWE-P1.
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Telegram'
+        400:
+          $ref: '#/components/responses/400'
+  /api/v1/state:
+    get:
+      tags:
+        - homewizard
+      summary: Actual State
+      description: This endpoint returns the actual state of the Energy Socket. This endpoint is only available for the HWE-SKT.
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocketState'
+        400:
+          $ref: '#/components/responses/400'
+    put:
+      tags:
+        - homewizard
+      operationId: controlState
+      summary: Control State
+      description: This endpoint controls the state of the Energy Socket. This endpoint is only available for the HWE-SKT.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocketState'
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocketState'
+components:
+  responses:
+    400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Basic:
+      type: object
+      properties:
+        product_type:
+          type: string
+        product_name:
+          type: string
+        serial:
+          type: string
+        firmware_version:
+          type: string
+        api_version:
+          type: string
+      required:
+        - product_type
+        - product_name
+        - serial
+        - firmware_version
+        - api_version
+    DataHweP1:
+      type: object
+      properties:
+        smr_version:
+          type: number
+        meter_model:
+          type: string
+        wifi_ssid:
+          type: string
+        wifi_strength:
+          type: integer
+        total_power_import_t1_kwh:
+          type: number
+        total_power_import_t2_kwh:
+          type: number
+        total_power_export_t1_kwh:
+          type: number
+        total_power_export_t2_kwh:
+          type: number
+        active_power_w:
+          type: number
+        active_power_l1_w:
+          type: number
+        active_power_l2_w:
+          type: number
+        active_power_l3_w:
+          type: number
+        total_gas_m3:
+          type: number
+          nullable: true
+        gas_timestamp:
+          type: string
+          nullable: true
+      required:
+        - smr_version
+        - meter_model
+        - wifi_ssid
+        - wifi_strength
+        - total_power_import_t1_kwh
+        - total_power_import_t2_kwh
+        - total_power_export_t1_kwh
+        - total_power_export_t2_kwh
+        - active_power_w
+        - active_power_l1_w
+    DataHweSkt:
+      type: object
+      properties:
+        wifi_ssid:
+          type: string
+        wifi_strength:
+          type: integer
+        total_power_import_t1_kwh:
+          type: number
+        total_power_export_t1_kwh:
+          type: number
+        active_power_w:
+          type: number
+        active_power_l1_w:
+          type: number
+      required:
+        - wifi_ssid
+        - wifi_strength
+        - total_power_import_t1_kwh
+        - total_power_export_t1_kwh
+        - active_power_w
+        - active_power_l1_w
+    DataHweWtr:
+      type: object
+      properties:
+        wifi_ssid:
+          type: string
+        wifi_strength:
+          type: integer
+        active_liter_lpm:
+          type: number
+        total_liter_m3:
+          type: number
+      required:
+        - wifi_ssid
+        - wifi_strength
+        - active_liter_lpm
+        - total_liter_m3
+    DataSDM230Wifi:
+      type: object
+      properties:
+        wifi_ssid:
+          type: string
+        wifi_strength:
+          type: integer
+        total_power_import_t1_kwh:
+          type: number
+        total_power_export_t1_kwh:
+          type: number
+        active_power_w:
+          type: number
+        active_power_l1_w:
+          type: number
+      required:
+        - wifi_ssid
+        - wifi_strength
+        - total_power_import_t1_kwh
+        - total_power_export_t1_kwh
+        - active_power_w
+        - active_power_l1_w
+    DataSDM630Wifi:
+      type: object
+      properties:
+        wifi_ssid:
+          type: string
+        wifi_strength:
+          type: integer
+        total_power_import_t1_kwh:
+          type: number
+        total_power_export_t1_kwh:
+          type: number
+        active_power_w:
+          type: number
+        active_power_l1_w:
+          type: number
+        active_power_l2_w:
+          type: number
+        active_power_l3_w:
+          type: number
+      required:
+        - wifi_ssid
+        - wifi_strength
+        - total_power_import_t1_kwh
+        - total_power_export_t1_kwh
+        - active_power_w
+        - active_power_l1_w
+        - active_power_l2_w
+        - active_power_l3_w
+    Telegram:
+      type: string
+    SocketState:
+      type: object
+      properties:
+        power_on:
+          type: boolean
+        switch_lock:
+          type: boolean
+        brightness:
+          type: number
+    Error:
+      type: object
+      properties:
+        id:
+          type: number
+          enum:
+            - 2
+            - 7
+            - 8
+            - 201
+            - 202
+            - 901
+          description: |
+            * 2 - BODY_CONTAINS_INVALID_JSON
+            * 7 - INVALID_VALUE_FOR_PARAMETER
+            * 8 - PARAMETER_IS_NOT_MODIFIABLE
+            * 201 - REQUEST_TO_LONG
+            * 202 - API_DISABLED
+            * 901 - INTERNAL_Error
+        description:
+          type: string
