@@ -37,14 +37,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_v1_data_get200_response.py
-test/test_basic.py
-test/test_data_hwe_p1.py
-test/test_data_hwe_skt.py
-test/test_data_hwe_wtr.py
-test/test_data_sdm230_wifi.py
-test/test_data_sdm630_wifi.py
-test/test_error.py
-test/test_homewizard_api.py
-test/test_socket_state.py
 tox.ini

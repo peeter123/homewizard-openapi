@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total_gas_m3** | **float, none_type** |  | [optional] 
-**gas_timestamp** | **str, none_type** |  | [optional] 
+**gas_timestamp** | **int, none_type** |  | [optional] 
 **smr_version** | **float** |  | [optional] 
 **meter_model** | **str** |  | [optional] 
 **wifi_ssid** | **str** |  | [optional] 

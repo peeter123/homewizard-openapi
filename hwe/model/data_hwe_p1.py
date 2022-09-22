@@ -94,7 +94,7 @@ class DataHweP1(ModelNormal):
             'active_power_l2_w': (float,),  # noqa: E501
             'active_power_l3_w': (float,),  # noqa: E501
             'total_gas_m3': (float, none_type,),  # noqa: E501
-            'gas_timestamp': (str, none_type,),  # noqa: E501
+            'gas_timestamp': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -175,7 +175,7 @@ class DataHweP1(ModelNormal):
             active_power_l2_w (float): [optional]  # noqa: E501
             active_power_l3_w (float): [optional]  # noqa: E501
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
-            gas_timestamp (str, none_type): [optional]  # noqa: E501
+            gas_timestamp (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -286,7 +286,7 @@ class DataHweP1(ModelNormal):
             active_power_l2_w (float): [optional]  # noqa: E501
             active_power_l3_w (float): [optional]  # noqa: E501
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
-            gas_timestamp (str, none_type): [optional]  # noqa: E501
+            gas_timestamp (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

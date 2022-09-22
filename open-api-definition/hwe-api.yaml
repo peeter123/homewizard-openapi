@@ -161,7 +161,7 @@ components:
           type: number
           nullable: true
         gas_timestamp:
-          type: string
+          type: integer
           nullable: true
       required:
         - smr_version

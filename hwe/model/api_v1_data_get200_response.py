@@ -96,7 +96,7 @@ class ApiV1DataGet200Response(ModelComposed):
         lazy_import()
         return {
             'total_gas_m3': (float, none_type,),  # noqa: E501
-            'gas_timestamp': (str, none_type,),  # noqa: E501
+            'gas_timestamp': (int, none_type,),  # noqa: E501
             'smr_version': (float,),  # noqa: E501
             'meter_model': (str,),  # noqa: E501
             'wifi_ssid': (str,),  # noqa: E501
@@ -177,7 +177,7 @@ class ApiV1DataGet200Response(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
-            gas_timestamp (str, none_type): [optional]  # noqa: E501
+            gas_timestamp (int, none_type): [optional]  # noqa: E501
             smr_version (float): [optional]  # noqa: E501
             meter_model (str): [optional]  # noqa: E501
             wifi_ssid (str): [optional]  # noqa: E501
@@ -296,7 +296,7 @@ class ApiV1DataGet200Response(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
-            gas_timestamp (str, none_type): [optional]  # noqa: E501
+            gas_timestamp (int, none_type): [optional]  # noqa: E501
             smr_version (float): [optional]  # noqa: E501
             meter_model (str): [optional]  # noqa: E501
             wifi_ssid (str): [optional]  # noqa: E501

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **active_power_l2_w** | **float** |  | [optional] 
 **active_power_l3_w** | **float** |  | [optional] 
 **total_gas_m3** | **float, none_type** |  | [optional] 
-**gas_timestamp** | **str, none_type** |  | [optional] 
+**gas_timestamp** | **int, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

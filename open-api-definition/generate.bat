@@ -1,0 +1,1 @@
+openapi-generator-cli generate -i open-api-definition/hwe-api.yaml -g python --package-name hwe
