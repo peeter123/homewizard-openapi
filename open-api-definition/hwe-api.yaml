@@ -45,7 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
+                anyOf:
                   - $ref: '#/components/schemas/DataHweP1'
                   - $ref: '#/components/schemas/DataHweSkt'
                   - $ref: '#/components/schemas/DataHweWtr'
@@ -155,8 +155,10 @@ components:
           type: number
         active_power_l2_w:
           type: number
+          nullable: true
         active_power_l3_w:
           type: number
+          nullable: true
         total_gas_m3:
           type: number
           nullable: true

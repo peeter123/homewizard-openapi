@@ -378,14 +378,14 @@ class ApiV1DataGet200Response(ModelComposed):
         lazy_import()
         return {
           'anyOf': [
-          ],
-          'allOf': [
-          ],
-          'oneOf': [
               DataHweP1,
               DataHweSkt,
               DataHweWtr,
               DataSDM230Wifi,
               DataSDM630Wifi,
+          ],
+          'allOf': [
+          ],
+          'oneOf': [
           ],
         }

@@ -91,8 +91,8 @@ class DataHweP1(ModelNormal):
             'total_power_export_t2_kwh': (float,),  # noqa: E501
             'active_power_w': (float,),  # noqa: E501
             'active_power_l1_w': (float,),  # noqa: E501
-            'active_power_l2_w': (float,),  # noqa: E501
-            'active_power_l3_w': (float,),  # noqa: E501
+            'active_power_l2_w': (float, none_type,),  # noqa: E501
+            'active_power_l3_w': (float, none_type,),  # noqa: E501
             'total_gas_m3': (float, none_type,),  # noqa: E501
             'gas_timestamp': (int, none_type,),  # noqa: E501
         }
@@ -172,8 +172,8 @@ class DataHweP1(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            active_power_l2_w (float): [optional]  # noqa: E501
-            active_power_l3_w (float): [optional]  # noqa: E501
+            active_power_l2_w (float, none_type): [optional]  # noqa: E501
+            active_power_l3_w (float, none_type): [optional]  # noqa: E501
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
             gas_timestamp (int, none_type): [optional]  # noqa: E501
         """
@@ -283,8 +283,8 @@ class DataHweP1(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            active_power_l2_w (float): [optional]  # noqa: E501
-            active_power_l3_w (float): [optional]  # noqa: E501
+            active_power_l2_w (float, none_type): [optional]  # noqa: E501
+            active_power_l3_w (float, none_type): [optional]  # noqa: E501
             total_gas_m3 (float, none_type): [optional]  # noqa: E501
             gas_timestamp (int, none_type): [optional]  # noqa: E501
         """

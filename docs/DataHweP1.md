@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **total_power_export_t2_kwh** | **float** |  | 
 **active_power_w** | **float** |  | 
 **active_power_l1_w** | **float** |  | 
-**active_power_l2_w** | **float** |  | [optional] 
-**active_power_l3_w** | **float** |  | [optional] 
+**active_power_l2_w** | **float, none_type** |  | [optional] 
+**active_power_l3_w** | **float, none_type** |  | [optional] 
 **total_gas_m3** | **float, none_type** |  | [optional] 
 **gas_timestamp** | **int, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
